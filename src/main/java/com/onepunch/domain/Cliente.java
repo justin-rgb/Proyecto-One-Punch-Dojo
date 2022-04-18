@@ -1,7 +1,6 @@
 package com.onepunch.domain;
 
 import java.io.Serializable;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,32 +11,35 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="colaborador")
-public class Colaborador implements Serializable {
+@Table(name="cliente")
+public class Cliente implements Serializable {
     
     private static final long serialVersionUID = 1L;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idColaborador;
+    private long idCliente;
     
     private String nombre;
     private String apellidos;
-    private String usuario;
-    private String pass;    
+    private String cedula;
+    private String direccion;
+    private String numTelefono;
+    private String categoria;
 
-    public Colaborador(){
+    public Cliente(){
         
     }
 
-    public Colaborador(String nombre, String apellidos, String usuario, String pass) {
+    public Cliente(String nombre, String apellidos, String cedula, String direccion, String numTelefono, String categoria) {
         this.nombre = nombre;
         this.apellidos = apellidos;
-        this.usuario = usuario;
-        this.pass = pass;
+        this.cedula = cedula;
+        this.direccion = direccion;
+        this.numTelefono = numTelefono;
+        this.categoria = categoria;
     }
     
     
-  
     
 }

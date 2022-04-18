@@ -38,7 +38,7 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             
-                            <li class="nav-item">
+                            <li class="nav-item" sec:authorize="hasRole('ADMIN')">
                                 <a class="nav-link active" aria-current="page" th:href="@{/colaboradores}" th:text="#{menu.colaboradores}">Colaboradores</a>
                             </li>
 
@@ -69,7 +69,7 @@
  
                         </ul>
                         <form method="POST" th:action="@{/logout}" class="d-flex">
-                            <a href="#" onclick="this.parentNode.submit();" class="nav-link">
+                            <a href="#" onclick="this.parentNode.submit();" class="nav-link" style="color: white;">
                                 <i class="fas fa-user-times"></i> [[#{login.logout}]]
                             </a>
                         </form>

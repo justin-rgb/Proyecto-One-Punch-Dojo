@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+    <html 
+        xmlns:th="http://www.thymeleaf.org" 
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:sec="http://thymeleaft.org/extras/spring-security"
+    >
+    <head th:replace="layout/menu :: head">
+        <title>Clientes</title>
+    </head>
+    
+    <body>
+        
+        <header th:replace="layout/menu :: navbar"></header>
+        
+        <section class="container mt-5">
+            <h2 th:text="#{clientes.titulo}"> Lista </h2>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellidos</th>
+                        <th scope="col">Cédula</th>
+                        <th scope="col">Direccion</th>
+                        <th scope="col">Numero de Telefono</th>
+                        <th scope="col">Membresía</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="cliente : ${clientes}">          
+                        <td scope="row">[[${cliente.idCliente}]]</td>
+                        <td>[[${cliente.nombre}]]</td>
+                        <td>[[${cliente.apellidos}]]</td>
+                        <td>[[${cliente.cedula}]]</td>
+                        <td>[[${cliente.direccion}]]</td>
+                        <td>[[${cliente.numTelefono}]]</td>
+                        <td>[[${cliente.categoria}]]</td>
+                        <td>
+                            <a sec:authorize="hasRole('ADMIN')" th:href="@{/cliente/modificar/}+${cliente.idCliente}"
+                               class="btn btn-success">
+                                <i class="fas fa-angle-double-right"></i> [[#{accion.actualizar}]]
+                            </a>
+                        </td>
+                        <td>
+                            <a sec:authorize="hasRole('ADMIN')" th:href="@{/cliente/eliminar/}+${cliente.idCliente}"
+                               class="btn btn-danger">
+                                <i class="fas fa-angle-double-right"></i> [[#{accion.eliminar}]]
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <header th:replace="layout/menu :: footer"></header>
+    
+    </body>
+</html>
