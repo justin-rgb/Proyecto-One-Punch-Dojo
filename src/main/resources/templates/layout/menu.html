@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <html 
+        xmlns:th="http://www.thymeleaf.org" 
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:sec="http://thymeleaft.org/extras/spring-security"
+    >
+        
+    <head th:fragment="head">
+        <title>One Punch Dojo</title>
+        <meta charset="UTF-8"/>
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
+        <link rel="stylesheet" type="text/css" href="static/css/index.css" th:href="@{/css/index.css}">
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+        <link rel="icon" href="https://images.squarespace-cdn.com/content/v1/5abac1beee175961e3c03d61/1527522096200-5IS9PUL36D0TND5P3FPJ/fist-red.png" > 
+    </head>
+        
+        
+    <body>
+        
+        <header th:fragment="navbar">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+                <div class="container-fluid">
+                    <a class="navbar-brand" th:href="@{/}">
+                        <img src="https://media.istockphoto.com/vectors/two-fists-bumping-together-vector-illustration-two-hands-with-fists-vector-id1127744470?b=1&k=6&m=1127744470&s=170667a&w=0&h=0r8aH8Tj04LREy923kgngz8019PFsVGlz1_rQe-6PDw="
+                            alt="Icon" 
+                            width="52"
+                            style="border-radius: 20px"
+                        >
+                    </a>
+                    
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" th:href="@{/colaboradores}" th:text="#{menu.colaboradores}">Colaboradores</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" th:href="@{/clientes}" th:text="#{menu.clientes}">Clientes</a>
+                            </li>
+                            
+                            
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle active" 
+                                   href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" 
+                                   aria-expanded="false"
+                                   th:text="#{menu.logistica}">
+                                    Logistica
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" th:href="@{/logistica/inventario}" th:text="#{menu.inventario}">Inventario</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" th:href="@{/logistica/proveedores}" th:text="#{menu.proveedores}" >Proveedores</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" th:href="@{/logistica/compras}" th:text="#{menu.compras}">Compras</a></li>
+                                </ul>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" th:href="@{/facturas}" th:text="#{menu.facturas}">Facturas</a>
+                            </li>
+ 
+                        </ul>
+                        <form method="POST" th:action="@{/logout}" class="d-flex">
+                            <a href="#" onclick="this.parentNode.submit();" class="nav-link">
+                                <i class="fas fa-user-times"></i> [[#{login.logout}]]
+                            </a>
+                        </form>
+                        
+                    </div>
+                </div>
+            </nav>
+        </header>
+        
+        
+        
+        <!-- FRAGMENTO PIE DE PAGINA -->
+        <footer th:fragment="footer" class="position-fixed bottom-0 start-0 end-0 bg-danger text-white mt-5 p-2">
+            <div class="container">
+                <div class="col">
+                    <p class="lead text-center">
+                        &COPY [[#{plantilla.derechos}]]
+                        <a th:href="@{/(lang=es)}">ES</a> | 
+                        <a th:href="@{/(lang=en)}">EN</a>
+                    </p>
+                </div>
+            </div>
+        </footer>
+        
+    </body>
+</html>
