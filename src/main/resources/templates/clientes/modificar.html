@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+    <html 
+        xmlns:th="http://www.thymeleaf.org" 
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:sec="http://thymeleaft.org/extras/spring-security"
+    >
+    <head th:replace="layout/menu :: head">
+        <title>Clientes</title> 
+    </head>
+    
+    <body>
+        
+        <header th:replace="layout/menu :: navbar"></header>
+        
+        
+        <section class="container mt-5">
+            
+            <h2> Formulario de Clientes </h2>
+            <a class="btn btn-danger" th:href="@{/clientes}"> Volver atras</a>
+            <form class="row g-3 mt-3" method="POST"
+                    th:action="@{/clientes/guardar}"
+                    th:object="${cliente}">
+                <input type="hidden" name="idCliente" th:field="*{idCliente}"/>
+                <div class="col-md-6">
+                    <label for="nombre" class="form-label"> [[#{clientes.nombre}]] </label>
+                    <input type="text" name="nombre" class="form-control" id="nombre" th:field="*{nombre}">
+                </div>
+                <div class="col-md-6">
+                    <label for="apellidos" class="form-label"> [[#{clientes.apellidos}]] </label>
+                    <input type="text" name="apellidos" class="form-control" id="apellidos" th:field="*{apellidos}">
+                </div>
+                <div class="col-12">
+                    <label for="direccion" class="form-label"> [[#{clientes.direccion}]] </label>
+                    <input type="text" th:field="*{direccion}" name="direccion" class="form-control" id="direccion" placeholder="Alajuela, Cartago, San Joé">
+                </div>
+                <div class="col-12">
+                    <label for="telefono" class="form-label">[[#{clientes.telefono}]]</label>
+                    <input type="text" th:field="*{numTelefono}" name="numTelefono" class="form-control" id="telefono" placeholder="">
+                </div>
+
+                <div class="col-md-4">
+                    <label for="cedula" class="form-label"> [[#{clientes.cedula}]] </label>
+                    <input type="text" th:field="*{cedula}" name="cedula" class="form-control" id="cedula" placeholder="1-1111-1111">
+                </div>
+                
+                <div class="col-md-4">
+                    <label for="inputState" class="form-label">[[#{clientes.categoria}]]</label>
+                    <select id="inputState" class="form-select" name="categoria">
+                        <option selected>Basico </option>
+                        <option>Intermedio</option>
+                        <option>Premium</option>
+                    </select>
+                </div>
+                
+                <div class="col-12">
+                    <button type="submit" class="btn btn-success">Registrar</button>
+                </div>
+            </form>
+            
+        </section>
+        
+        
+        
+        <header th:replace="layout/menu :: footer"></header>
+    
+    </body>
+</html>

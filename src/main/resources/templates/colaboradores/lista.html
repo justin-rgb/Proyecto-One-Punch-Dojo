@@ -13,7 +13,16 @@
         <header th:replace="layout/menu :: navbar"></header>
         
         <section class="container mt-5">
-            <h2 th:text="#{colaboradores.titulo}"> Lista </h2>
+            <h2 th:text="#{colaboradores.titulo}" class="d-inline"> Lista </h2>
+            <button class="btn btn-success p-2" 
+               type="button"
+               style="margin-left: 30px; margin-bottom: 5px;"
+               data-bs-toggle="modal" 
+               data-bs-target="#agregarColaborador"
+               sec:authorize="hasRole('ADMIN')"
+            > 
+                    [[#{colaboradores.agregar}]]
+            </button>
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
@@ -34,13 +43,13 @@
                         <td>[[${colaborador.usuario}]]</td>
                         <td>[[${colaborador.pass}]]</td>
                         <td>
-                            <a sec:authorize="hasRole('ADMIN')" th:href="@{/colaborador/modificar/}+${colaborador.idColaborador}"
+                            <a sec:authorize="hasRole('ADMIN')" th:href="@{/colaboradores/modificar/}+${colaborador.idColaborador}"
                                class="btn btn-success">
                                 <i class="fas fa-angle-double-right"></i> [[#{accion.actualizar}]]
                             </a>
                         </td>
                         <td>
-                            <a sec:authorize="hasRole('ADMIN')" th:href="@{/colaborador/eliminar/}+${colaborador.idColaborador}"
+                            <a sec:authorize="hasRole('ADMIN')" th:href="@{/colaboradores/eliminar/}+${colaborador.idColaborador}"
                                class="btn btn-danger">
                                 <i class="fas fa-angle-double-right"></i> [[#{accion.eliminar}]]
                             </a>
@@ -49,6 +58,53 @@
                 </tbody>
             </table>
         </section>
+        
+        
+        
+        
+        
+        <!-- Modal Agregar categoria -->
+        <section>
+            
+            <div id="agregarColaborador" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header bg-success text-white">
+                            <h5 class="modal-title">Agregar Colaborador</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div> 
+                        <form th:action="@{/colaboradores/guardar}" th:object="${colaborador}"
+                              method="POST" class="was-validated">
+
+                            <div class="modal-body">
+
+                                <div class="form-group">
+                                    <label for="nombre">[[#{colaboradores.nombre}]]</label>
+                                    <input type="text" class="form-control" name="nombre" required="true">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="apellidos">[[#{colaboradores.apellidos}]]</label>
+                                    <input type="text" class="form-control" name="apellidos" required="true">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="pass">[[#{colaboradores.pass}]]</label>
+                                    <input type="password" class="form-control" name="pass" required="true">
+                                </div>
+                                
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-success p-2" type="submit">Registrar Colaborador</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        
+        
         
         <header th:replace="layout/menu :: footer"></header>
     

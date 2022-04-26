@@ -12,6 +12,10 @@
         <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
         <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
         <link rel="stylesheet" type="text/css" href="static/css/index.css" th:href="@{/css/index.css}">
+        <!-- DATA TABLES -->
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+   
         <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
         <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
         <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
@@ -82,13 +86,13 @@
         
         
         <!-- FRAGMENTO PIE DE PAGINA -->
-        <footer th:fragment="footer" class="position-fixed bottom-0 start-0 end-0 bg-danger text-white mt-5 p-2">
-            <div class="container">
+        <footer th:fragment="footer" class="position-fixed bottom-0 start-0 end-0 bg-danger text-white mt-5 p-2" style="margin-top: 45px;">
+            <div class="container ">
                 <div class="col">
                     <p class="lead text-center">
                         &COPY [[#{plantilla.derechos}]]
-                        <a th:href="@{/(lang=es)}">ES</a> | 
-                        <a th:href="@{/(lang=en)}">EN</a>
+                        <a class="text-white" th:href="@{/(lang=es)}">ES</a> | 
+                        <a class="text-white" th:href="@{/(lang=en)}">EN</a>
                     </p>
                 </div>
             </div>

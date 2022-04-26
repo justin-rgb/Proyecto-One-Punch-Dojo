@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+    <html 
+        xmlns:th="http://www.thymeleaf.org" 
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:sec="http://thymeleaft.org/extras/spring-security"
+    >
+    <head th:replace="layout/menu :: head">
+        <title>Colaboradores</title> 
+    </head>
+    
+    <body>
+        
+        <header th:replace="layout/menu :: navbar"></header>
+        
+        
+        <section class="container mt-5">
+            
+            <h2> Formulario de Colaboradores </h2>
+            <a class="btn btn-danger" th:href="@{/colaboradores}"> Volver atras</a>
+            <form class="row g-3 mt-3" method="POST"
+                    th:action="@{/colaboradores/guardar}"
+                    th:object="${colaborador}">
+                <input type="hidden" name="idColaborador" th:field="*{idColaborador}"/>
+  
+                <div class="col-12">
+                    <label for="nombre" class="form-label"> [[#{colaboradores.nombre}]] </label>
+                    <input type="text" th:field="*{nombre}" name="nombre" class="form-control" id="nombre" placeholder="Nombre del colaborador...">
+                </div>
+                <div class="col-12">
+                    <label for="apellidos" class="form-label"> [[#{colaboradores.apellidos}]] </label>
+                    <input type="text" th:field="*{apellidos}" name="apellidos" class="form-control" id="apellidos" placeholder="Apellidos del colaborador...">
+                </div>
+                <div class="col-12">
+                    <label for="usuario" class="form-label"> [[#{colaboradores.usuario}]] </label>
+                    <input type="text" th:field="*{usuario}" name="usuario" class="form-control" id="usuario" disabled="true">
+                </div>
+                
+                <div class="col-12">
+                    <label for="pass" class="form-label"> [[#{colaboradores.pass}]] </label>
+                    <input type="password" th:field="*{pass}" name="pass" class="form-control" id="pass">
+                </div>
+
+                <div class="col-12">
+                    <button type="submit" class="btn btn-success">Guardar cambios</button>
+                </div>
+            </form>
+            
+        </section>
+        
+        
+        
+        <header th:replace="layout/menu :: footer"></header>
+    
+    </body>
+</html>

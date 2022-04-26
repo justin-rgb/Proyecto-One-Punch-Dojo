@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+    <html 
+        xmlns:th="http://www.thymeleaf.org" 
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:sec="http://thymeleaft.org/extras/spring-security"
+    >
+    <head th:replace="layout/menu :: head">
+        <title> Facturas </title>
+    </head>
+    <body>
+        
+        <header th:replace="layout/menu :: navbar"></header>
+        
+        <section class="container mt-5">
+            <h2 th:text="#{colaboradores.titulo}"> Lista </h2>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellidos</th>
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Contraseña</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="colaborador : ${colaboradores}">          
+                        <td scope="row">[[${colaborador.idColaborador}]]</td>
+                        <td>[[${colaborador.nombre}]]</td>
+                        <td>[[${colaborador.apellidos}]]</td>
+                        <td>[[${colaborador.usuario}]]</td>
+                        <td>[[${colaborador.pass}]]</td>
+                        <td>
+                            <a sec:authorize="hasRole('ADMIN')" th:href="@{/colaborador/modificar/}+${colaborador.idColaborador}"
+                               class="btn btn-success">
+                                <i class="fas fa-angle-double-right"></i> [[#{accion.actualizar}]]
+                            </a>
+                        </td>
+                        <td>
+                            <a sec:authorize="hasRole('ADMIN')" th:href="@{/colaborador/eliminar/}+${colaborador.idColaborador}"
+                               class="btn btn-danger">
+                                <i class="fas fa-angle-double-right"></i> [[#{accion.eliminar}]]
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <header th:replace="layout/menu :: footer"></header>
+    
+        
+        
+    </body>
+</html>
