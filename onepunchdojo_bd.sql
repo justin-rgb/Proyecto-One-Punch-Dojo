@@ -22,6 +22,9 @@ CREATE TABLE `onepunchdojo_bd`.`inventario`(`id_item` INT NOT NULL auto_incremen
  
 CREATE TABLE `onepunchdojo_bd`.`proveedor`(`id_proveedor` INT NOT NULL auto_increment,`nombre_empresa` varchar(50) NOT NULL, `telefono` varchar(50),
 			`ubicacion` VARCHAR(50),`url_imagen` varchar(200),PRIMARY KEY(`id_proveedor`));
+			
+CREATE TABLE `onepunchdojo_bd`.`trofeo`(`id_trofeo` INT NOT NULL auto_increment,`descripcion` varchar(50) NOT NULL, `puesto` int NOT NULL,
+			`nombre_competicion` varchar(50), `fecha` varchar(50) NOT NULL, PRIMARY KEY(`id_trofeo`));
 
 /*  crear usuario y asignar permisos */
 CREATE USER 'admin' @'%' IDENTIFIED BY 'admin';
