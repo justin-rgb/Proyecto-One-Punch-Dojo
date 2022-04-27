@@ -36,14 +36,7 @@ public class TrofeoController {
     }
     
     
-    @GetMapping("/trofeos/modificar/{idTrofeo}")
-    public String modificarCliente(Trofeo trofeo, Model model){
-        trofeo = trofeoService.getTrofeo(trofeo);
-        model.addAttribute("trofeo",trofeo);
-        return "/trofeos/modificar";
-    }
-    
-    @GetMapping("/trofeo/eliminar/{idTrofeo}")
+    @GetMapping("/trofeos/eliminar/{idTrofeo}")
     public String eliminarTrofeo(Trofeo trofeo){
         trofeoService.delete(trofeo);
         return "redirect:/trofeos";
