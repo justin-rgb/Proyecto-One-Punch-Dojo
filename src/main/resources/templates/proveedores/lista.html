@@ -16,7 +16,7 @@
         <section class="container mt-5">
             <h2 class="d-inline"> Listado de Proveedores</h2>
             
-            <a class="btn btn-success p-2" style="margin-left: 30px; margin-bottom: 5px;" th:href="@{/proveedores/nuevo}">
+            <a sec:authorize="hasRole('ADMIN') or hasRole('ENTRENADOR')" class="btn btn-success p-2" style="margin-left: 30px; margin-bottom: 5px;" th:href="@{/proveedores/nuevo}">
                 Registrar proveedor  
             </a>
                     

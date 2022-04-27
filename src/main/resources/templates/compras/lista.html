@@ -21,7 +21,7 @@
                style="margin-left: 30px; margin-bottom: 5px;"
                data-bs-toggle="modal" 
                data-bs-target="#agregarCompra"
-               sec:authorize="hasRole('ADMIN')"
+               sec:authorize="hasRole('ADMIN') or hasRole('ENTRENADOR')"
             > Agregar compra
             </button>
             

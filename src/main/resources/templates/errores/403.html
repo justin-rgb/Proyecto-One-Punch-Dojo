@@ -2,31 +2,35 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
      xmlns:sec="http://thymeleaft.org/extras/spring-security"
       >
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <style>
-            .contenido {
-                text-align: center;
-                border-radius: 20px;
-                top:50%;
-                left:50%;
-                margin-left: -250px;
-                margin-top: -75px;
-                width: 500px;
-                height: 150px;
-                background-color: red;
-                position: fixed;
-                overflow: auto;
-            }        
-        </style>
+    <head th:replace="layout/menu :: head">
+        <title>Error 403</title>
     </head>
+    
     <body>
-        <div class="contenido">
-            <h2> [[#{e403.titulo}]] </h2>
-            <p> [[#{e403.texto}]]  </p>
-            <a th:href="@{/}"> [[#{accion.regresar}]]  </a>
-        </div>
+        
+        <header th:replace="layout/menu :: navbar"></header>
+         
+        
+        <section class="bg-dark text-white py-5">
+            <div class="container py-5">
+                <div class="row">
+                    
+                    <div class="col-md-2 text-center">
+                        <p><i class="fa fa-exclamation-triangle fa-5x"></i><br/> [[#{e403.titulo}]] </p>
+                    </div>
+                    
+                    <div class="col-md-10">
+                        <h3> Error 403 !!!!</h3>
+                        <p> [[#{e403.texto}]] </p>
+                        <a class="btn btn-danger" th:href="@{/}">Volver atras</a>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        
+        <header th:replace="layout/menu :: footer"></header>
+        
     </body>
 </html>

@@ -1,15 +1,107 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <html 
+        xmlns:th="http://www.thymeleaf.org" 
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:sec="http://thymeleaft.org/extras/spring-security"
+    >
+    <head th:replace="layout/menu :: head">
+        <title> Trofeos </title>
     </head>
     <body>
-        <div>TODO write content</div>
+
+        <header th:replace="layout/menu :: navbar"></header>
+
+        <section class="container mt-5">
+            <h2 class="d-inline"> Nuestros Logros </h2>
+
+            <button class="btn btn-success p-2" 
+                    type="button"
+                    style="margin-left: 30px; margin-bottom: 5px;"
+                    data-bs-toggle="modal" 
+                    data-bs-target="#agregarTrofeo"
+                    sec:authorize="hasRole('ADMIN') or hasRole('ENTRENADOR')"
+                    > 
+                Añadir logro
+            </button>
+            
+            <section class="row align-items-center" >
+
+                <div class="card mb-3 col-4 mt-3" style="max-width: 540px; border-spacing: 5px;" th:each="trofeo : ${trofeos}" >
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="https://img.freepik.com/vector-gratis/trofeo-oro-placa-ganador-concurso_68708-545.jpg?w=2000" class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Competicion: [[${trofeo.nombreCompeticion}]]</h5>
+                                <h5 class="card-title">Lugar: [[${trofeo.puesto}]]</h5>
+                                <p class="card-text">Descripcion [[${trofeo.descripcion}]]</p>
+                                <p class="card-text">Fecha: [[${trofeo.fecha}]]</p>
+
+                                <a sec:authorize="hasRole('ADMIN')" th:href="@{/trofeos/eliminar/}+${trofeo.idTrofeo}"
+                                   class="btn btn-danger">
+                                    <i class="fas fa-angle-double-right"></i> [[#{accion.eliminar}]]
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            
+        </section>
+        
+        
+        <!-- MODAL PARA AGREGAR TROFEO -->
+        <section>
+            
+            <div id="agregarTrofeo" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header bg-success text-white">
+                            <h5 class="modal-title"> Crear Logro </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div> 
+                        <form th:action="@{/trofeos/guardar}" th:object="${trofeos}"
+                              method="POST" class="was-validated">
+
+                            <div class="modal-body">
+
+                                <div class="form-group">
+                                    <label for="nombreCompeticion"> Nombre de la competicion </label>
+                                    <input type="text" class="form-control" name="nombreCompeticion" required="true">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="puesto"> Puesto </label>
+                                    <input type="number" class="form-control" name="puesto" required="true">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="descripcion"> Descripcion </label>
+                                    <input type="text" class="form-control" name="descripcion" required="true">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="fecha"> Fecha </label>
+                                    <input type="date" class="form-control" name="fecha" required="true">
+                                </div>
+                                         
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-success p-2" type="submit">Registrar Logro</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        
+        
+        <header th:replace="layout/menu :: footer"></header>
+        
+        
     </body>
 </html>
