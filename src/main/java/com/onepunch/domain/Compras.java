@@ -24,14 +24,14 @@ public class Compras implements Serializable {
     private double monto;
     private String detalle;
     private String proveedor;
-    private Date fecha;
+    private String fecha;
     private String urlImagen;    
 
     public Compras(){
         
     }
 
-    public Compras(double monto, String detalle, String proveedor, Date fecha, String urlImagen) {
+    public Compras(double monto, String detalle, String proveedor, String fecha, String urlImagen) {
         this.monto = monto;
         this.detalle = detalle;
         this.proveedor = proveedor;

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+    <html 
+        xmlns:th="http://www.thymeleaf.org" 
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:sec="http://thymeleaft.org/extras/spring-security"
+    >
+    <head th:replace="layout/menu :: head">
+        <title> Compras </title>
+    </head>
+    <body>
+       
+                
+        <header th:replace="layout/menu :: navbar"></header>
+        
+        
+        <section class="container mt-5">
+            <h2 class="d-inline"> Historial de Compras </h2>
+            
+            <button class="btn btn-success p-2" 
+               type="button"
+               style="margin-left: 30px; margin-bottom: 5px;"
+               data-bs-toggle="modal" 
+               data-bs-target="#agregarCompra"
+               sec:authorize="hasRole('ADMIN')"
+            > Agregar compra
+            </button>
+            
+            <section class="row align-items-center">
+                
+                <div class="card mb-3 col-4 me-3 mt-3" th:each="compra : ${compras}">
+                    <img th:src="${compra.urlImagen}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h4 class="card-title">Consecutivo [[${compra.idCompra}]]</h4>
+                            <h5 class="card-title">Proveedor: [[${compra.proveedor}]]</h5>
+                            <h5 class="card-title">Detalle: [[${compra.detalle}]]</h5>
+                            <p class="card-text"> Monto: $[[${compra.monto}]]</p>
+                        </div>
+                        <a sec:authorize="hasRole('ADMIN')" th:href="@{/compras/modificar/}+${compra.idCompra}"
+                               class="btn btn-success">
+                                <i class="fas fa-angle-double-right"></i> [[#{accion.actualizar}]]
+                        </a>
+                        <a sec:authorize="hasRole('ADMIN')" th:href="@{/compras/eliminar/}+${compra.idCompra}"
+                               class="btn btn-danger">
+                                <i class="fas fa-angle-double-right"></i> [[#{accion.eliminar}]]
+                        </a>
+                </div>
+
+            </section>
+        </section>
+        
+        
+        
+        <!-- Modal Agregar categoria -->
+        <section>
+            
+            <div id="agregarCompra" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header bg-warning text-white">
+                            <h5 class="modal-title">Agregar al Historial de Compras</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div> 
+                        <form th:action="@{/compras/guardar}" th:object="${compras}"
+                              method="POST" class="was-validated">
+
+                            <div class="modal-body">
+
+                                <div class="form-group">
+                                    <label for="proveedor"> Proveedor </label>
+                                    <input type="text" class="form-control" name="proveedor" required="true">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="urlImagen">Url de Imagen </label>
+                                    <input type="text" class="form-control" name="urlImagen" required="true">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="detalle"> Detalle </label>
+                                    <input type="text" class="form-control" name="detalle" required="true">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="monto"> Monto </label>
+                                    <input type="number" class="form-control" name="monto" required="true">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="fecha"> Fecha </label>
+                                    <input type="date" class="form-control" name="fecha" required="true">
+                                </div>
+                                         
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-success p-2" type="submit">Registrar Compra</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        
+        
+        <header th:replace="layout/menu :: footer"></header>
+        
+        
+    </body>
+</html>

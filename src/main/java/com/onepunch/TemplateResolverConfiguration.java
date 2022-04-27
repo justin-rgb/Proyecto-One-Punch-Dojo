@@ -96,7 +96,29 @@ public class TemplateResolverConfiguration {
         return templateResolver;
     }
     
+    @Bean
+    public ClassLoaderTemplateResolver templatesResolver_7(){
+        ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
+        templateResolver.setPrefix("templates/eventos/");
+        templateResolver.setSuffix(".html");
+        templateResolver.setTemplateMode(TemplateMode.HTML);
+        templateResolver.setCharacterEncoding("UTF-8");
+        templateResolver.setOrder(7);
+        templateResolver.setCheckExistence(true);
+        return templateResolver;
+    }
     
+    @Bean
+    public ClassLoaderTemplateResolver templatesResolver_8(){
+        ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
+        templateResolver.setPrefix("templates/trofeos/");
+        templateResolver.setSuffix(".html");
+        templateResolver.setTemplateMode(TemplateMode.HTML);
+        templateResolver.setCharacterEncoding("UTF-8");
+        templateResolver.setOrder(8);
+        templateResolver.setCheckExistence(true);
+        return templateResolver;
+    }
 }
 
 

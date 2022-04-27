@@ -19,20 +19,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .password("{noop}123")
                 .roles("ADMIN","VENDEDOR","USER")
         .and()
-        .withUser("juan")
+        .withUser("julian")
                 .password("{noop}123")
-                .roles("VENDEDOR","USER")
+                .roles("ENTRENADOR","USUARIO")
         .and()
-        .withUser("rebeca")
+        .withUser("profe")
                 .password("{noop}123")
-                .roles("USER");
+                .roles("USUARIO");
     }
   
     
     @Override
     protected void configure(HttpSecurity http) throws Exception{
         http.authorizeRequests()
-            .antMatchers("/").hasAnyRole("ENTRENADOR","RECLUTADOR","ADMIN")
+            .antMatchers("/").hasAnyRole("ENTRENADOR","USUARIO","ADMIN")
             
             .antMatchers("/admin*").access("hasRole('ADMIN')")
                 

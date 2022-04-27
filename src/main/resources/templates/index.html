@@ -57,34 +57,22 @@
         </section>
         
         
-        <section class="container mt-5 mb-5">
+        <section class="container mt-5 mb-5" style="margin-bottom: 50px;">
             <h2> Eventos </h2>
+            
             <section class="row align-items-center" >
                 
-                <div class="card col-5 me-3 mt-3">
+                <div class="card col-5 me-3 mt-3" th:each="evento : ${eventos}">
                     <div class="card-header">
-                        Evento con Id 1
+                        Instructor del evento: [[${evento.instructor}]]
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <h5 class="card-title"> Fecha y hora: [[${evento.fecha}]] [[${evento.hora}]]</h5>
+                        <p class="card-text">Descripcion: [[${evento.descripcion}]]</p>
                         <a href="#" class="btn btn-primary"> Ver detalles del evento</a>
                     </div>
                 </div>
-                
-                <div class="card col-5 me-3 mt-3">
-                    <div class="card-header">
-                        Evento con Id 2
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary"> Ver detalles del evento </a>
-                    </div>
-                </div><!-- comment -->
-                
-              
-                
+                      
             </section>
         </section>
         

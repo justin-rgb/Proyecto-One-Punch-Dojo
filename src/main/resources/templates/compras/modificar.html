@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+    <html 
+        xmlns:th="http://www.thymeleaf.org" 
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:sec="http://thymeleaft.org/extras/spring-security"
+    >
+    <head th:replace="layout/menu :: head">
+        <title>Compras</title> 
+    </head>
+    
+    <body>
+        
+        <header th:replace="layout/menu :: navbar"></header>
+        
+        
+        <section class="container mt-5">
+            
+            <h2> Modificar compra </h2>
+            <a class="btn btn-danger" th:href="@{/compras}"> Volver atras</a>
+            <form class="row g-3 mt-3" method="POST"
+                    th:action="@{/compras/guardar}"
+                    th:object="${compras}">
+                <input type="hidden" name="idCompras" th:field="*{idCompra}"/>
+                
+                <div class="col-md-6">
+                    <label for="proveedor" class="form-label"> Proveedor </label>
+                    <input type="text" name="proveedor" class="form-control" id="proveedor" th:field="*{proveedor}" placeholder="Proveedor...">
+                </div>
+                <div class="col-md-6">
+                    <label for="urlImagen" class="form-label"> Url de Imagen del Producto </label>
+                    <input type="text" name="urlImagen" class="form-control" id="urlImagen" th:field="*{urlImagen}" placeholder="https://ejemplo.com">
+                </div>
+                <div class="col-12">
+                    <label for="detalle" class="form-label"> Detalle </label>
+                    <input type="text" th:field="*{detalle}" name="detalle" class="form-control" id="direccion" placeholder="Detalle...">
+                </div>
+                <div class="col-12">
+                    <label for="monto" class="form-label"> Monto </label>
+                    <input type="number" th:field="*{monto}" name="monto" class="form-control" id="monto" placeholder="00000">
+                </div>
+
+                <div class="col-md-4">
+                    <label for="fecha" class="form-label">Fecha </label>
+                    <input type="text" th:field="*{fecha}" name="fecha" class="form-control" id="fecha" disabled="true">
+                </div>
+                
+                <div class="col-12">
+                    <button type="submit" class="btn btn-success">Modificar compra</button>
+                </div>
+            </form>
+            
+        </section>
+        
+        
+        
+        <header th:replace="layout/menu :: footer"></header>
+    
+    </body>
+</html>

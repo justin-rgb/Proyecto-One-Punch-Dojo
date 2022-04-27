@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+    <html 
+        xmlns:th="http://www.thymeleaf.org" 
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:sec="http://thymeleaft.org/extras/spring-security"
+    >
+    <head th:replace="layout/menu :: head">
+        <title>Proveedores</title> 
+    </head>
+    
+    <body>
+        
+        <header th:replace="layout/menu :: navbar"></header>
+        
+        
+        <section class="container mt-5">
+            
+            <h2> Formulario de Proveedores </h2>
+            
+            <a class="btn btn-danger" th:href="@{/proveedores}"> Volver atras</a>
+            
+            <form class="row g-3 mt-3" method="POST"
+                  th:action="@{/proveedores/guardar}"
+                  th:object="${proveedor}"
+                  >
+                <input type="hidden" name="idProveedor" th:field="*{idProveedor}"/>
+                <div class="col-md-6">
+                    <label for="nombreEmpresa" class="form-label"> Nombre de la Empresa </label>
+                    <input type="text" name="nombreEmpresa" class="form-control" id="nombre" th:field="*{nombreEmpresa}">
+                </div>
+                <div class="col-md-6">
+                    <label for="telefono" class="form-label"> Telefono </label>
+                    <input type="text" name="telefono" class="form-control" id="telefono" th:field="*{telefono}">
+                </div>
+                <div class="col-12">
+                    <label for="ubicacion" class="form-label"> Ubicacion </label>
+                    <input type="text" th:field="*{ubicacion}" name="ubicacion" class="form-control" id="ubicacion" placeholder="Coyol de Alajuela, San Jose centro...">
+                </div>
+      
+                <div class="col-12">
+                    <label for="urlImagen" class="form-label"> Url de la Imagen</label>
+                    <input type="text" th:field="*{urlImagen}" name="urlImagen" class="form-control" id="urlImagen" placeholder="https://.....">
+                </div>
+                
+
+                <div class="col-12">
+                    <button type="submit" class="btn btn-success">Registrar Proveedor</button>
+                </div>
+            </form>
+
+        </section>
+        
+        
+        
+        <header th:replace="layout/menu :: footer"></header>
+    
+    </body>
+</html>

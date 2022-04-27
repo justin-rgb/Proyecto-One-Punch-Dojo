@@ -59,18 +59,24 @@
                                     Logistica
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" th:href="@{/logistica/inventario}" th:text="#{menu.inventario}">Inventario</a></li>
+                                    <li><a class="dropdown-item" th:href="@{/inventario}" th:text="#{menu.inventario}">Inventario</a></li>
                                     <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" th:href="@{/logistica/proveedores}" th:text="#{menu.proveedores}" >Proveedores</a></li>
+                                    <li><a class="dropdown-item" th:href="@{/proveedores}" th:text="#{menu.proveedores}" >Proveedores</a></li>
                                     <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" th:href="@{/logistica/compras}" th:text="#{menu.compras}">Compras</a></li>
+                                    <li><a class="dropdown-item" th:href="@{/compras}" th:text="#{menu.compras}">Compras</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" th:href="@{/eventos}" th:text="#{menu.eventos}">Eventos</a></li>  
                                 </ul>
                             </li>
                             
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" th:href="@{/facturas}" th:text="#{menu.facturas}">Facturas</a>
                             </li>
- 
+                            
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" th:href="@{/trofeos}" th:text="#{menu.trofeos}">Trofeos</a>
+                            </li>
+                            
                         </ul>
                         <form method="POST" th:action="@{/logout}" class="d-flex">
                             <a href="#" onclick="this.parentNode.submit();" class="nav-link" style="color: white;">
@@ -86,7 +92,7 @@
         
         
         <!-- FRAGMENTO PIE DE PAGINA -->
-        <footer th:fragment="footer" class="position-fixed bottom-0 start-0 end-0 bg-danger text-white mt-5 p-2" style="margin-top: 45px;">
+        <footer th:fragment="footer" class="position-fixed bottom-0 start-0 end-0 bg-danger text-white mt-5 p-2" style="margin-top: 100px;">
             <div class="container ">
                 <div class="col">
                     <p class="lead text-center">

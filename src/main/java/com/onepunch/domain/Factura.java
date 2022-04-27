@@ -23,15 +23,15 @@ public class Factura implements Serializable {
     
     private String nombre;
     private String apellidos;
-    private double montoTotal;
+    private int montoTotal;
     private String cedula;
-    private Date Fecha;
+    private String Fecha;
 
     public Factura(){
         
     }
 
-    public Factura(String nombre, String apellidos, double montoTotal, String cedula, Date Fecha) {
+    public Factura(String nombre, String apellidos, int montoTotal, String cedula, String Fecha) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.montoTotal = montoTotal;

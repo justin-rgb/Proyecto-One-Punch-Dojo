@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+    <html 
+        xmlns:th="http://www.thymeleaf.org" 
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:sec="http://thymeleaft.org/extras/spring-security"
+    >
+    <head th:replace="layout/menu :: head">
+        <title>Eventos</title> 
+    </head>
+    
+    <body>
+        
+        <header th:replace="layout/menu :: navbar"></header>
+        
+        
+        <section class="container mt-5">
+            
+            <h2> Ajustar detalles del evento </h2>
+            <a class="btn btn-danger mt-3" th:href="@{/eventos}"> Volver atras</a>
+            
+            <form class="row g-3 mt-3" method="POST"
+                    th:action="@{/eventos/guardar}"
+                    th:object="${evento}">
+                <input type="hidden" name="idEvento" th:field="*{idEvento}"/>
+                
+                <div class="col-md-6">
+                    <label for="instructor" class="form-label"> Instructor </label>
+                    <input type="text" name="instructor" class="form-control" id="instructor" th:field="*{instructor}" placeholder="Instructor a cargo...">
+                </div>
+                <div class="col-md-6">
+                    <label for="descripcion" class="form-label"> Descripcion </label>
+                    <input type="text" name="descripcion" class="form-control" id="descripcion" th:field="*{descripcion}" placeholder="....">
+                </div>
+                <div class="col-12">
+                    <label for="fecha" class="form-label"> Fecha </label>
+                    <input type="date" th:field="*{fecha}" name="fecha" class="form-control" id="fecha">
+                </div>
+                <div class="col-12">
+                    <label for="hora" class="form-label"> Hora </label>
+                    <input type="time" th:field="*{hora}" name="hora" class="form-control" id="hora">
+                </div>
+                
+                <div class="col-12">
+                    <button type="submit" class="btn btn-success">Guardar cambios</button>
+                </div>
+            </form>
+            
+        </section>
+        
+        
+        
+        <header th:replace="layout/menu :: footer"></header>
+    
+    </body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+    <html 
+        xmlns:th="http://www.thymeleaf.org" 
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:sec="http://thymeleaft.org/extras/spring-security"
+    >
+    <head th:replace="layout/menu :: head">
+        <title>Facturas</title> 
+    </head>
+    
+    <body>
+        
+        <header th:replace="layout/menu :: navbar"></header>
+        
+        
+        <section class="container mt-5">
+            
+            <h2> Modificar factura </h2>
+            <a class="btn btn-danger mt-3" th:href="@{/facturas}"> Regresar </a>
+            
+            <form class="row g-3 mt-3" method="POST"
+                    th:action="@{/facturas/guardar}"
+                    th:object="${factura}">
+                <input type="hidden" name="idFactura" th:field="*{idFactura}"/>
+                
+                <div class="col-md-12">
+                    <label for="nombre" class="form-label"> Nombre del Cliente </label>
+                    <input type="text" name="nombre" class="form-control" id="nombre" th:field="*{nombre}" placeholder="Nombre..." required="true">
+                </div>
+                <div class="col-md-12">
+                    <label for="apellidos" class="form-label"> Apellidos del Cliente </label>
+                    <input type="text" name="apellidos" class="form-control" id="apellidos" th:field="*{apellidos}" placeholder="Apellidos....">
+                </div>
+                <div class="col-md-6">
+                    <label for="cedula" class="form-label"> Cedula </label>
+                    <input type="text" name="cedula" class="form-control" id="cedula" th:field="*{cedula}" placeholder="1-1111-1111">
+                </div><!-- comment -->
+                <div class="col-md-6">
+                    <label for="montoTotal" class="form-label"> Monto Total </label>
+                    <input type="text" name="montoTotal" class="form-control" id="montoTotal" th:field="*{montoTotal}" placeholder="00000">
+                </div>
+                <div class="col-12">
+                    <label for="fecha" class="form-label"> Fecha </label>
+                    <input type="date" th:field="*{fecha}" name="fecha" class="form-control" id="fecha">
+                </div>
+                
+                <div class="col-12">
+                    <button type="submit" class="btn btn-success">Guardar cambios</button>
+                </div>
+            </form>
+            
+        </section>
+        
+        
+        
+        <header th:replace="layout/menu :: footer"></header>
+    
+    </body>
+</html>
