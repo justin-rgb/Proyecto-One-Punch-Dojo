@@ -30,10 +30,10 @@
                         <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="card-title">[[${cliente.nombre}]] [[${cliente.apellidos}]]</h5>
-                                <h5 class="card-title">Cédula: [[${cliente.cedula}]]</h5>
-                                <p class="card-text">Dirección: [[${cliente.direccion}]]</p>
-                                <p class="card-text">Membresía: [[${cliente.categoria}]]</p>
-                                <p class="card-text">Contacto:<small class="text-muted"> [[${cliente.numTelefono}]] </small></p>
+                                <h5 class="card-title">[[#{clientes.cedula}]]: [[${cliente.cedula}]]</h5>
+                                <p class="card-text">[[#{clientes.direccion}]]: [[${cliente.direccion}]]</p>
+                                <p class="card-text">[[#{clientes.categoria}]]: [[${cliente.categoria}]]</p>
+                                <p class="card-text">[[#{clientes.telefono}]]:<small class="text-muted"> [[${cliente.numTelefono}]] </small></p>
 
                                 <a sec:authorize="hasRole('ADMIN')" th:href="@{/clientes/modificar/}+${cliente.idCliente}"
                                    class="btn btn-success">

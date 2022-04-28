@@ -22,7 +22,7 @@
                data-bs-target="#agregarFactura"
                sec:authorize="hasRole('ADMIN') or hasRole('ENTRENADOR')"
             > 
-                   Crear Factura
+                   [[#{factura.agregar}]]
             </button>
             
             <a sec:authorize="hasRole('ROLE_ADMIN')" 
@@ -37,11 +37,11 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Nombre del cliente</th>
-                        <th scope="col">Apellidos</th>
-                        <th scope="col">Cédula</th>
-                        <th scope="col">Monto total</th>
-                        <th scope="col">Fecha</th>
+                        <th scope="col">[[#{factura.nombre}]]</th>
+                        <th scope="col">[[#{factura.apellidos}]]</th>
+                        <th scope="col">[[#{factura.cedula}]]</th>
+                        <th scope="col">[[#{factura.monto_total}]]</th>
+                        <th scope="col">[[#{factura.fecha}]]</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -91,27 +91,27 @@
                             <div class="modal-body">
 
                                 <div class="form-group mb-2">
-                                    <label for="nombre"> Nombre del Cliente </label>
+                                    <label for="nombre"> [[#{factura.nombre}]] </label>
                                     <input type="text" class="form-control" name="nombre" required="true" placeholder="....">
                                 </div>
 
                                 <div class="form-group mb-2">
-                                    <label for="apellidos"> Apellidos </label>
+                                    <label for="apellidos"> [[#{factura.apellidos}]] </label>
                                     <input type="text" class="form-control" name="apellidos" required="true" placeholder="....">
                                 </div>
 
                                 <div class="form-group mb-2">
-                                    <label for="cedula"> Cedula </label>
+                                    <label for="cedula"> [[#{factura.cedula}]] </label>
                                     <input type="text" class="form-control" name="cedula" required="true" placeholder="1-1111-1111">
                                 </div>
                                 
                                 <div class="form-group mb-2">
-                                    <label for="montoTotal"> Monto total cancelado </label>
+                                    <label for="montoTotal"> [[#{factura.monto_total}]] </label>
                                     <input type="number" class="form-control" name="montoTotal" required="true" placeholder="0000">
                                 </div>
                                 
                                 <div class="form-group mb-2">
-                                    <label for="fecha"> Fecha </label>
+                                    <label for="fecha"> [[#{factura.fecha}]] </label>
                                     <input type="date" class="form-control" name="fecha" required="true">
                                 </div>
                                 

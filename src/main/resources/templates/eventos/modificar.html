@@ -24,19 +24,19 @@
                 <input type="hidden" name="idEvento" th:field="*{idEvento}"/>
                 
                 <div class="col-md-6">
-                    <label for="instructor" class="form-label"> Instructor </label>
+                    <label for="instructor" class="form-label"> [[#{evento.instructor}]] </label>
                     <input type="text" name="instructor" class="form-control" id="instructor" th:field="*{instructor}" placeholder="Instructor a cargo...">
                 </div>
                 <div class="col-md-6">
-                    <label for="descripcion" class="form-label"> Descripcion </label>
+                    <label for="descripcion" class="form-label"> [[#{evento.descripcion}]] </label>
                     <input type="text" name="descripcion" class="form-control" id="descripcion" th:field="*{descripcion}" placeholder="....">
                 </div>
                 <div class="col-12">
-                    <label for="fecha" class="form-label"> Fecha </label>
+                    <label for="fecha" class="form-label"> [[#{evento.fecha}]] </label>
                     <input type="date" th:field="*{fecha}" name="fecha" class="form-control" id="fecha">
                 </div>
                 <div class="col-12">
-                    <label for="hora" class="form-label"> Hora </label>
+                    <label for="hora" class="form-label"> [[#{evento.hora}]] </label>
                     <input type="time" th:field="*{hora}" name="hora" class="form-control" id="hora">
                 </div>
                 

@@ -14,7 +14,7 @@
         
         
         <section class="container mt-5">
-            <h2 class="d-inline"> Inventario </h2>
+            <h2 class="d-inline"> [[#{menu.inventario}]] </h2>
             
             <button class="btn btn-success p-2" 
                type="button"
@@ -22,7 +22,7 @@
                data-bs-toggle="modal" 
                data-bs-target="#agregarInventario"
                sec:authorize="hasRole('ADMIN') or hasRole('ENTRENADOR')"
-            > Agregar al Inventario
+            > [[#{inventario.agregar}]]
             </button>
             
             <section class="row align-items-center">
@@ -30,8 +30,8 @@
                 <div class="card mb-3 col-4 me-3 mt-3" th:each="inventario : ${inventario}">
                     <img th:src="${inventario.urlImagen}" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">Cantidad: [[${inventario.cantidad}]]</h5>
-                            <p class="card-text"> Descripcion:  [[${inventario.descripcion}]]</p>
+                            <h5 class="card-title">[[#{inventario.cantidad}]]: [[${inventario.cantidad}]]</h5>
+                            <p class="card-text"> [[#{inventario.descripcion}]]:  [[${inventario.descripcion}]]</p>
                         </div>
                         <a sec:authorize="hasRole('ADMIN')" th:href="@{/inventario/eliminar/}+${inventario.idItem}"
                                class="btn btn-danger">
@@ -60,7 +60,7 @@
                             <div class="modal-body">
 
                                 <div class="form-group">
-                                    <label for="descripcion"> Descripcion </label>
+                                    <label for="descripcion"> [[#{inventario.descripcion}]] </label>
                                     <input type="text" class="form-control" name="descripcion" required="true">
                                 </div>
 
@@ -70,13 +70,13 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="cantidad"> Cantidad </label>
+                                    <label for="cantidad"> [[#{inventario.cantidad}]] </label>
                                     <input type="number" class="form-control" name="cantidad" required="true">
                                 </div>
                                 
                             </div>
                             <div class="modal-footer">
-                                <button class="btn btn-success p-2" type="submit">Registrar Articulo</button>
+                                <button class="btn btn-success p-2" type="submit">[[#{inventario.agregar}]]</button>
                             </div>
                         </form>
                     </div>

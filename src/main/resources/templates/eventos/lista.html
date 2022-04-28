@@ -28,10 +28,10 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Instructor</th>
-                        <th scope="col">Descripcion</th>
-                        <th scope="col">Fecha</th>
-                        <th scope="col">Hora</th>
+                        <th scope="col">[[#{evento.instructor}]]</th>
+                        <th scope="col">[[#{evento.descripcion}]]</th>
+                        <th scope="col">[[#{evento.fecha}]]</th>
+                        <th scope="col">[[#{evento.hora}]]</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -80,28 +80,28 @@
                             <div class="modal-body">
 
                                 <div class="form-group">
-                                    <label for="instructor"> Instructor </label>
+                                    <label for="instructor"> [[#{evento.instructor}]] </label>
                                     <input type="text" class="form-control" name="instructor" required="true">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="descripcion"> Descripcion </label>
+                                    <label for="descripcion"> [[#{evento.descripcion}]] </label>
                                     <input type="text" class="form-control" name="descripcion" required="true">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="fecha"> Fecha </label>
+                                    <label for="fecha"> [[#{evento.fecha}]] </label>
                                     <input type="date" class="form-control" name="fecha" required="true">
                                 </div>
                                 
                                 <div class="form-group">
-                                    <label for="hora"> Hora </label>
+                                    <label for="hora"> [[#{evento.hora}]] </label>
                                     <input type="time" class="form-control" name="hora" required="true">
                                 </div>
                                 
                             </div>
                             <div class="modal-footer">
-                                <button class="btn btn-success p-2" type="submit"> Programar Evento</button>
+                                <button class="btn btn-success p-2" type="submit"> [[#{evento.agregar}]] </button>
                             </div>
                         </form>
                     </div>

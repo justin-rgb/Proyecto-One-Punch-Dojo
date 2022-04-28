@@ -14,7 +14,7 @@
         
         
         <section class="container mt-5">
-            <h2 class="d-inline"> Historial de Compras </h2>
+            <h2 class="d-inline"> [[#{compras.titulo}]] </h2>
             
             <button class="btn btn-success p-2" 
                type="button"
@@ -22,18 +22,18 @@
                data-bs-toggle="modal" 
                data-bs-target="#agregarCompra"
                sec:authorize="hasRole('ADMIN') or hasRole('ENTRENADOR')"
-            > Agregar compra
+            > [[#{compras.agregar}]]
             </button>
             
             <section class="row align-items-center">
                 
-                <div class="card mb-3 col-4 me-3 mt-3" th:each="compra : ${compras}">
+                <div class="card mb-3 col-3 me-3 mt-3" th:each="compra : ${compras}">
                     <img th:src="${compra.urlImagen}" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h4 class="card-title">Consecutivo [[${compra.idCompra}]]</h4>
-                            <h5 class="card-title">Proveedor: [[${compra.proveedor}]]</h5>
-                            <h5 class="card-title">Detalle: [[${compra.detalle}]]</h5>
-                            <p class="card-text"> Monto: $[[${compra.monto}]]</p>
+                            <h4 class="card-title">ID: [[${compra.idCompra}]]</h4>
+                            <h5 class="card-title">[[#{compras.proveedor}]]: [[${compra.proveedor}]]</h5>
+                            <h5 class="card-title">[[#{compras.detalle}]]: [[${compra.detalle}]]</h5>
+                            <p class="card-text"> [[#{compras.monto}]] $[[${compra.monto}]]</p>
                         </div>
                         <a sec:authorize="hasRole('ADMIN')" th:href="@{/compras/modificar/}+${compra.idCompra}"
                                class="btn btn-success">
@@ -66,7 +66,7 @@
                             <div class="modal-body">
 
                                 <div class="form-group">
-                                    <label for="proveedor"> Proveedor </label>
+                                    <label for="proveedor"> [[#{compras.proveedor}]] </label>
                                     <input type="text" class="form-control" name="proveedor" required="true">
                                 </div>
 
@@ -76,17 +76,17 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="detalle"> Detalle </label>
+                                    <label for="detalle"> [[#{compras.detalle}]] </label>
                                     <input type="text" class="form-control" name="detalle" required="true">
                                 </div>
                                 
                                 <div class="form-group">
-                                    <label for="monto"> Monto </label>
+                                    <label for="monto"> [[#{compras.monto}]] </label>
                                     <input type="number" class="form-control" name="monto" required="true">
                                 </div>
                                 
                                 <div class="form-group">
-                                    <label for="fecha"> Fecha </label>
+                                    <label for="fecha"> [[#{compras.fecha}]] </label>
                                     <input type="date" class="form-control" name="fecha" required="true">
                                 </div>
                                          

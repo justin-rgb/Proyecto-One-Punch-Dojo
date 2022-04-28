@@ -23,7 +23,7 @@
                 <input type="hidden" name="idCompras" th:field="*{idCompra}"/>
                 
                 <div class="col-md-6">
-                    <label for="proveedor" class="form-label"> Proveedor </label>
+                    <label for="proveedor" class="form-label"> [[#{compras.proveedor}]] </label>
                     <input type="text" name="proveedor" class="form-control" id="proveedor" th:field="*{proveedor}" placeholder="Proveedor...">
                 </div>
                 <div class="col-md-6">
@@ -31,16 +31,16 @@
                     <input type="text" name="urlImagen" class="form-control" id="urlImagen" th:field="*{urlImagen}" placeholder="https://ejemplo.com">
                 </div>
                 <div class="col-12">
-                    <label for="detalle" class="form-label"> Detalle </label>
+                    <label for="detalle" class="form-label"> [[#{compras.detalle}]] </label>
                     <input type="text" th:field="*{detalle}" name="detalle" class="form-control" id="direccion" placeholder="Detalle...">
                 </div>
                 <div class="col-12">
-                    <label for="monto" class="form-label"> Monto </label>
+                    <label for="monto" class="form-label"> [[#{compras.monto}]] </label>
                     <input type="number" th:field="*{monto}" name="monto" class="form-control" id="monto" placeholder="00000">
                 </div>
 
                 <div class="col-md-4">
-                    <label for="fecha" class="form-label">Fecha </label>
+                    <label for="fecha" class="form-label">[[#{compras.fecha}]] </label>
                     <input type="text" th:field="*{fecha}" name="fecha" class="form-control" id="fecha" disabled="true">
                 </div>
                 
